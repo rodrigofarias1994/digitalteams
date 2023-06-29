@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    color: var(--light);
+    font-family:  'Montserrat', sans-serif;
+    
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+    background-color: var(--gray0); 
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 3px;
+    background-color: var(--pink);
+}
+
+:root{
+    --gray0: #111111;
+    --gray1: #282828;
+    --gray2: #343434;
+    --gray3: #404040;
+    --gray4: #555555;
+    --pink: #C61067;
+    --light: #FFFFFF;
+}
+
+
+body{
+    width: 100%;
+    height: 100vh;
+    background-color: var(--gray1);
+}
+
+header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    padding: 16px 100px;
+}
+
+header .logo img{
+    display: block;
+    height: 50px;
+    margin-top: 30px;
+
+}
+
+header .busca{
+    width: 500px;
+    position: relative;
+}
+
+header .busca input{
+    width: 100%;
+    height: 50px;
+    background-color: var(--gray2);
+    margin-top: 28px;
+    border-radius: 8px;
+    padding-left: 16px;
+    border: 3px solid var(--gray3);
+    transition-duration: 300ms;
+}
+
+header .busca input:focus{
+    border-color: var(--pink);
+}
+
+header .busca box-icon{
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    position: absolute;
+    top: 35px;
+    right: 4px;
+    fill: var(--light);
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+header .busca box-icon:hover{
+    fill: var(--pink);
+}
+
+#equipes{
+    padding: 0 100px;
+    margin-top: 60px;
+    
+}
+
+#equipes h3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+#equipes h3 button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid var(--pink);
+    padding: 5px 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+    transition-duration: 300ms;
+
+}
+
+#equipes h3 button:hover{
+    background-color: var(--pink);
+
+}
+
+#equipes h3 button box-icon{
+    fill: var(--light);
+}
+
+#equipes ul{
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+#equipes ul li{
+    width: calc(20% - 13px);
+    background-color: var(--gray2);
+    padding: 16px;
+    border-radius: 8px;
+}
+
+#equipes ul li h4{
+    text-align: center;
+    opacity: .7;
+
+}
+
+#equipes ul li div{
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    gap: 26px;
+}
+
+#equipes ul li div h2{
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    background-color: var(--gray4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 26px;
+    margin-bottom: 16px;
+    
+    opacity: .3;
+    font-size: 50px;
+    font-weight: normal;
+    text-align: center;
+}
+#equipes ul li div h2 span{
+    font-size: 14px;
+    display: block;
+    font-weight: bold;
+}
+#equipes ul li div button{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid var(--pink);
+    padding: 5px 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+    transition-duration: 300ms;
+    margin-left: 10px;
+    
+}
+
+#equipes ul li div button:hover{
+    background-color: var(--pink);
+}
+
+#equipes ul li div button box-icon{
+    fill: var(--light);
+}
+
+#overlay{
+    width: 100%;
+    height: 100%;
+    background-color: var(--gray0);
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition-duration: 200ms;
+}
+
+#overlay.active {
+    opacity: .8;
+    visibility: visible;
+}
+
+#modal{
+    width: 400px;
+    padding: 26px;
+    background-color: var(--gray1);
+    border-radius: 10px;
+    position: absolute;
+    top: 70%;
+    left: calc(50% - 200px);
+    transform: translateY(-50%);
+    transition: 200ms;
+    transition-delay: 200ms;
+    opacity: 0;
+    visibility: hidden;
+
+
+}
+
+#modal.active{
+    opacity: 1;
+    visibility: visible;
+    top: 50%;
+}
+
+
+#modal form h3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#modal form h3 box-icon{
+    fill: var(--light);
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 8px;
+    background-color: var(--gray2);
+    cursor: pointer;
+    transition-duration: 200ms;
+
+}
+
+#modal form h3 box-icon:hover{
+    background-color: var(--pink);
+}
+
+#modal form label{
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+
+}
+
+#modal form input{
+    width: 100%;
+    height: 50px;
+    background-color: var(--gray2);
+    border-radius: 8px;
+    padding-left: 16px;
+    border: 3px solid var(--gray3);
+    transition-duration: 300ms;
+    margin-bottom: 16px;
+}
+
+#modal input:focus{
+    border-color: var(--pink);
+}
+
+#modal form button{
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid var(--pink);
+    padding: 10px 16px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+    transition-duration: 300ms;
+
+}
+
+#modal form button:hover{
+    background-color: var(--pink);
+    
+}
+
+
+
+/* RESPONSIVO TABLET */
+@media only screen and (max-width: 768px ){
+
+}
+    
+
+/* RESPONSIVO CELULAR */
+@media only screen and (max-width: 600px){
+    header{
+        padding: 16px;
+        flex-direction: column;
+    }
+
+    header .busca{
+        width: 100%;
+    }
+
+    #equipes{
+        padding: 16px;
+        margin: 0;
+    }
+
+    #equipes ul li{
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+   
+
+
