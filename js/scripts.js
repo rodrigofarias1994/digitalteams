@@ -14,23 +14,38 @@ overlay.onclick = function(){
     modal.classList.remove('active');
 }
 
-let equipes = [];
+let equipes = JSON.parse(localStorage.getItem('equipes')) || [];
 
 function listarEquipes(){
     listaDeEquipes.innerHTML = '';
-    for(let i = 0; i < equipes.length; i++){
+    if(equipes.length > 0){
+for(let i = 0; i < equipes.length; i++){
         listaDeEquipes.innerHTML += `
         <li>
         <h4>${equipes[i].nome}</h4>
         <div>
-            <h2>${equipes[i].participantes} <span>/ ${equipes[i].qtdMax}</span></h2>
-            <button>
-                <box-icon name='plus'></box-icon> Adicionar 
-            </button>
+            <h2>${equipes[i].participantes.length} <span>/ ${equipes[i].qtdMax}</span></h2>
+            <div class='acoes'>
+                <button>
+                    Adicionar 
+                </button>
+                <button onClick='deletarEquipe(${i})'>
+                    <box-icon name='trash'></box-icon>
+                </button> 
+            </div>
         </div>
     </li>
-    `;
-    }
+    `;}
+}
+     else{
+        listaDeEquipes.innerHTML = `
+        <li class='sem-equipes'>Crue sua primeira equipe!</li>
+        `
+     } 
+    
+    
+   
+    
 }
 
 listarEquipes();
@@ -43,12 +58,42 @@ function criarEquipe(){
     equipes.push(
     {       nome : equipeNome.value,
             qtdMax: equipeQtd.value,
-            participantes: 0
-
+            participantes: []
     }
     );
+    if(!localStorage.getItem('equipes')){
+        localStorage.setItem('equipes' , JSON.stringify(equipes));
+    }
+    else{
+        let equipesSalvas = JSON.parse(localStorage.getItem('equipes'));
+        equipesSalvas.push(
+            {   nome : equipeNome.value,
+                qtdMax: equipeQtd.value,
+                participantes: []
+        }
+        );
+        localStorage.setItem('equipes' , JSON.stringify(equipesSalvas));
+    }
+
+    formCriar.reset();
+    overlay.classList.remove('active');
+    modal.classList.remove('active');
    listarEquipes();
 }
 
-    
+function deletarEquipe(posicao){
+    let equipesRestantes = [];
+    let equipesSalvas = JSON.parse(localStorage.getItem('equipes'));
+    for( let i = 0; i < equipes.length; i++){
+        if(i != posicao){
+            equipesRestantes.push(equipes[i]);
+        }
+    }
+    equipes = [];
+    equipes = equipesRestantes;
+    equipesSalvas = [];
+    equipesSalvas = equipesRestantes;
+    localStorage.setItem('equipes' , JSON.stringify(equipesSalvas))
+    listarEquipes();
+}
 

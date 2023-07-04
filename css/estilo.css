@@ -142,7 +142,11 @@ header .busca box-icon:hover{
     padding: 16px;
     border-radius: 8px;
 }
-
+#equipes ul li.sem-equipes{
+    width: 100%;
+    text-align: center;
+    color: #999999;
+}
 #equipes ul li h4{
     text-align: center;
     opacity: .7;
@@ -180,11 +184,17 @@ header .busca box-icon:hover{
     display: block;
     font-weight: bold;
 }
-#equipes ul li div button{
-    width: 100%;
+
+#equipes ul li div .acoes{
     display: flex;
-    align-items: center;
+    flex-direction: row;
     gap: 10px;
+    width: 100%;
+}
+
+#equipes ul li div button{
+    min-height: 40px;
+    flex: 1;
     background-color: transparent;
     border-radius: 5px;
     border: 1px solid var(--pink);
@@ -195,7 +205,6 @@ header .busca box-icon:hover{
     font-weight: bold;
     cursor: pointer;
     transition-duration: 300ms;
-    margin-left: 10px;
     
 }
 
@@ -316,7 +325,6 @@ header .busca box-icon:hover{
     background-color: var(--pink);
     
 }
-
 
 
 /* RESPONSIVO TABLET */
